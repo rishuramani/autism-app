@@ -11,11 +11,14 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@tensorflow-models/speech-commands": "^0.5.4",
+    "@tensorflow/tfjs": "^4.22.0",
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recordrtc": "^5.6.2",
-    "tone": "^14.7.77"
+    "tone": "^14.7.77",
+    "web-speech-cognitive-services": "^8.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
