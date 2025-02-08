@@ -90,14 +90,15 @@ const ArticulationAssessment = () => {
 
     Object.values(phonemeAssessments).forEach(positionScores => {
       Object.values(positionScores).forEach(score => {
-        if (score) {
-          total += score;
+        if (score !== undefined) {
+          // Convert score to percentage: 0 -> 0%, 1 -> 50%, 2 -> 100%
+          total += (score * 50);
           count++;
         }
       });
     });
 
-    return count ? Math.round((total / count) * 100) : null;
+    return count ? Math.round(total / count) : null;
   };
 
   const renderWordAssessment = (phoneme, position, word) => (
