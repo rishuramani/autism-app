@@ -29,8 +29,8 @@ A web-based application for speech therapy assessment and exercises, specificall
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/speech-therapy-app.git
-cd speech-therapy-app
+git clone https://github.com/rishuramani/autism-app.git
+cd autism-app
 ```
 
 2. Install dependencies:
