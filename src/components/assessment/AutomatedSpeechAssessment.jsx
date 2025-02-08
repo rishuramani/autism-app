@@ -224,7 +224,8 @@ const AutomatedSpeechAssessment = () => {
     Object.values(results).forEach(scores => {
       Object.values(scores).forEach(score => {
         if (score !== undefined) {
-          total += score;
+          // Convert score to percentage: 0 -> 0%, 1 -> 50%, 2 -> 100%
+          total += (score * 50);
           count++;
         }
       });
