@@ -270,12 +270,21 @@ const AutomatedSpeechAssessment = () => {
 
   const calculateAverageScore = () => {
     if (Object.keys(results).length === 0) return 0;
-    
-    const scores = Object.values(results).map(result => 
-      (result.accuracy + result.pronunciation + result.fluency) / 3
-    );
-    
-    return scores.reduce((a, b) => a + b, 0) / scores.length;
+
+    let total = 0;
+    let count = 0;
+
+    Object.values(results).forEach(scores => {
+      Object.values(scores).forEach(score => {
+        if (score !== undefined) {
+          // Convert score to percentage: 0 -> 0%, 1 -> 50%, 2 -> 100%
+          total += (score * 50);
+          count++;
+        }
+      });
+    });
+
+    return count ? total / count : 0;
   };
 
   useEffect(() => {
