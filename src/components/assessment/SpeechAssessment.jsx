@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArticulationAssessment from './ArticulationAssessment';
 import PhonologicalAnalysis from './PhonologicalAnalysis';
 import AutomatedSpeechAssessment from './AutomatedSpeechAssessment';
+import { getUserData } from '../../utils/userDataStorage';
 
-const SpeechAssessment = () => {
+const SpeechAssessment = ({ userId }) => {
   const [activeTab, setActiveTab] = useState('automated');
   const [patientInfo, setPatientInfo] = useState({
     name: '',
     age: '',
     dateOfAssessment: new Date().toISOString().split('T')[0]
   });
+
+  useEffect(() => {
+    // Load patient data from intake form
+    if (userId) {
+      const userData = getUserData(userId);
+      if (userData?.intakeData) {
+        setPatientInfo(prev => ({
+          ...prev,
+          name: userData.intakeData.childName || '',
+          age: userData.intakeData.childAge || ''
+        }));
+      }
+    }
+  }, [userId]);
 
   const handlePatientInfoChange = (field, value) => {
     setPatientInfo(prev => ({
